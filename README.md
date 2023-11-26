@@ -1,8 +1,5 @@
-# document-similarity
+# Document Similarity Checker
 
-Attempts to quantify the similarity between two documents.
+Sebuah aplikasi pengecek kesamaan dua teks dan file (dokumen) dengan menghitung kosinus dari vektor (kata yang dikonversi menjadi vektor).
 
-### cosine similarity
-
-Converts two documents to vectors and computes the similarity between those vectors.
-Similarity is calculated by taking the inner product space that measures the cosine angle between them.
+Sumber kode dan library: https://github.com/machine-learning-projects/document-similarity
