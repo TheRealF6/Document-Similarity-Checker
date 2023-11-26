@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TF-IDF Document Similarity Calculator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-size: 18px;
+            color: #495057;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">TF-IDF Document Similarity Calculator</h1>
+        <form action="/calculate_similarity" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="inputChoice">Choose Input Type:</label>
+                <select class="form-control" id="inputChoice" name="inputChoice" onchange="toggleInputFields()">
+                    <option value="text">Text</option>
+                    <option value="file">File</option>
+                </select>
+            </div>
+            <div class="form-group" id="textAreaGroup1">
+                <label for="content1">Text 1:</label>
+                <textarea class="form-control" name="content1" rows="5" required></textarea>
+            </div>
+            <div class="form-group" id="fileInputGroup1" style="display: none;">
+                <label for="file1">File 1:</label>
+                <input type="file" class="form-control-file" name="file1" accept=".txt">
+            </div>
+            <div class="form-group" id="textAreaGroup2">
+                <label for="content2">Text 2:</label>
+                <textarea class="form-control" name="content2" rows="5" required></textarea>
+            </div>
+            <div class="form-group" id="fileInputGroup2" style="display: none;">
+                <label for="file2">File 2:</label>
+                <input type="file" class="form-control-file" name="file2" accept=".txt">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Calculate Similarity</button>
+        </form>
+    </div>
+
+    <script>
+        function toggleInputFields() {
+            var choice = document.getElementById("inputChoice").value;
+            var textAreaGroup1 = document.getElementById("textAreaGroup1");
+            var fileInputGroup1 = document.getElementById("fileInputGroup1");
+            var textAreaGroup2 = document.getElementById("textAreaGroup2");
+            var fileInputGroup2 = document.getElementById("fileInputGroup2");
+
+            if (choice === "text") {
+                textAreaGroup1.style.display = "block";
+                fileInputGroup1.style.display = "none";
+                textAreaGroup2.style.display = "block";
+                fileInputGroup2.style.display = "none";
+            } else if (choice === "file") {
+                textAreaGroup1.style.display = "none";
+                fileInputGroup1.style.display = "block";
+                textAreaGroup2.style.display = "none";
+                fileInputGroup2.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Similarity Result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            transition: background-color 0.5s ease;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            margin-top: 50px;
+            transition: margin 0.5s ease;
+        }
+
+        h1 {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 30px;
+            transition: color 0.5s ease;
+        }
+
+        p {
+            font-size: 18px;
+            color: #495057;
+            margin-top: 15px;
+        }
+
+        pre {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 15px;
+            overflow: auto;
+        }
+
+        .btn-calculate {
+            background-color: #007bff;
+            color: #fff;
+            margin-top: 30px;
+            transition: background-color 0.5s ease, transform 0.3s ease;
+        }
+
+        .btn-calculate:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .result-category {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .high-similarity {
+            color: #28a745; 
+            transition: color 0.5s ease;
+        }
+
+        .moderate-similarity {
+            color: #ffc107; 
+            transition: color 0.5s ease;
+        }
+
+        .low-similarity {
+            color: #007bff; 
+            transition: color 0.5s ease;
+        }
+
+        .very-low-similarity {
+            color: #dc3545; 
+            transition: color 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Similarity Result</h1>
+        <p class="mt-3">TF-IDF Vectors:</p>
+        <pre>{{ tfidf_vectors }}</pre>
+        <p class="mt-3">TF-IDF Similarity Percentage:</p>
+        <p>
+            {{ similarity_percentage }}
+        </p>
+        <div class="result-category">
+            Similarity Category: 
+            <span class="{% if similarity_percentage >= 80 %}high-similarity{% elif similarity_percentage >= 60 %}moderate-similarity{% elif similarity_percentage >= 40 %}low-similarity{% else %}very-low-similarity{% endif %}">
+                {% if similarity_percentage >= 80 %}
+                    High Similarity
+                {% elif similarity_percentage >= 60 %}
+                    Moderate Similarity
+                {% elif similarity_percentage >= 40 %}
+                    Low Similarity
+                {% else %}
+                    Very Low Similarity
+                {% endif %}
+            </span>
+        </div>        
+    </div>
+</body>
+</html>
